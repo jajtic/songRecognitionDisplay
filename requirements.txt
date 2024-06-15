@@ -1,0 +1,5 @@
+shazamio
+pyaudio
+pillow
+screeninfo
+requests
