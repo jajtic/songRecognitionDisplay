@@ -3,6 +3,8 @@ Detect the currently playing song and display some info about it
 
 **Currently works on Windows only**
 
+**Python 3.8 or higher is required.**
+
 ## Installation
 **Create a venv:** `python -m venv venv`
 
