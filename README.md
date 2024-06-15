@@ -21,3 +21,6 @@ _This usage example uses a smartphone as a secondary display and microphone (com
    - you can change which display is used on line 37
 
 This was an example setup. You can obviously use a secondary monitor and a real microphone instead of a phone.
+
+## Future plans
+Make it compatible with Linux so it can be run on a Raspberry Pi :)
