@@ -19,7 +19,7 @@ _This usage example uses a smartphone as a secondary display and microphone (com
 2. Connect the phone to the computer as a microphone using Bluetooth (you can use WO Mic)
 3. Run main.py
 4. Run display.py:
-   - you can edit the padding on line 55 if needed
+   - you can edit the padding on line 55 if needed, but it should automatically center
    - you can change which display is used on line 37
 
 This was an example setup. You can obviously use a secondary monitor and a real microphone instead of a phone.
