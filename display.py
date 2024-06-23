@@ -24,7 +24,7 @@ def get_song_data():
             'album': 'The song might not be recognized yet',
             'year': "Check the data.song file if you're stuck here for some time",
             'album_art': 'album-cover-default.png'
-            }
+        }
 
 # Function to create the UI layout and display initial song info
 def create_ui():
@@ -34,7 +34,7 @@ def create_ui():
     monitors = get_monitors()
 
     # Select the monitor (0 MAIN, 1 SECONDARY)
-    secondary_monitor = monitors[1]
+    secondary_monitor = monitors[0]
 
     # Exit fullscreen with 'Esc' key
     root.bind("<Escape>", lambda e: kill_window())
@@ -52,19 +52,34 @@ def create_ui():
 
     # Create a frame to hold the content
     content_frame = Frame(root, bg='black')
-    content_frame.pack(pady=50)  # Adjust the padding value to move the content down
+    content_frame.pack(expand=True, pady=(0, 0))  # Adjust the padding value to move the content down
+
+    # Create a subframe for the album art and text labels
+    album_art_frame = Frame(content_frame, bg='black')
+    album_art_frame.grid(row=0, column=0, padx=(100, 50), pady=20, sticky='n')  # Add padding to keep it in place
+
+    text_frame = Frame(content_frame, bg='black')
+    text_frame.grid(row=0, column=1, pady=20, sticky='n')
+
+    # Add column weight to keep the album art fixed
+    content_frame.grid_columnconfigure(0, weight=0)
+    content_frame.grid_columnconfigure(1, weight=1)
 
     # Initialize labels without content
-    album_art_label = Label(content_frame, bg='black')
-    album_art_label.pack(pady=20)
-    title_label = Label(content_frame, fg='white', bg='black', font=('Helvetica', 32, "bold"))
-    title_label.pack(pady=10)
-    artist_label = Label(content_frame, fg='white', bg='black', font=('Helvetica', 26))
-    artist_label.pack(pady=10)
-    album_label = Label(content_frame, fg='white', bg='black', font=('Helvetica', 20))
-    album_label.pack(pady=10)
-    year_label = Label(content_frame, fg='white', bg='black', font=('Helvetica', 20))
-    year_label.pack(pady=10)
+    album_art_label = Label(album_art_frame, bg='black')
+    album_art_label.pack()
+
+    title_label = Label(text_frame, fg='white', bg='black', font=('Helvetica', 36, "bold"))
+    title_label.pack(pady=10, anchor='w')
+
+    artist_label = Label(text_frame, fg='white', bg='black', font=('Helvetica', 30))
+    artist_label.pack(pady=10, anchor='w')
+
+    album_label = Label(text_frame, fg='white', bg='black', font=('Helvetica', 24))
+    album_label.pack(pady=10, anchor='w')
+
+    year_label = Label(text_frame, fg='white', bg='black', font=('Helvetica', 24))
+    year_label.pack(pady=10, anchor='w')
 
     # Display initial song info
     display_song_info({
@@ -74,7 +89,6 @@ def create_ui():
         'year': 'Make sure you have a microphone connected and that main.py is running',
         'album_art': 'album-cover-default.png'
     })
-
 
 # Function to update the displayed song info
 def display_song_info(song_info):
