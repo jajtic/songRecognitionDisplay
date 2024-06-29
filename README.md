@@ -19,6 +19,15 @@ If you get errors while attempting to install the requirements (especially while
 (you can replace `python3-dev` with the specific python version you're using such as `python3.11-dev` in case it doesn't work without it)
 
 ## Usage
+
+1. Connect a microphone if you haven't already
+2. Run main.py
+3. Run display.py
+   - you can edit the padding on line 64 if needed, but it should automatically center
+   - you can change which display is used on line 40
+
+
+### Example setup
 _This usage example uses a smartphone as a secondary display and microphone (completely wireless)_
 
 1. Connect the phone to the computer as a second display using Wi-Fi (you can use the spacedesk app)
