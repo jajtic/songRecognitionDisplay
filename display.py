@@ -3,13 +3,16 @@ from tkinter import Label, Frame
 from PIL import Image, ImageTk
 from screeninfo import get_monitors
 import ast, os
+import platform
 
 root = tk.Tk()
 
 # Function to kill the window
-def kill_window():
-    root.quit()
-    os.remove("data.song")
+def kill_window(event=None):
+    print("Pressed ESC; exiting")
+    root.destroy()
+    if os.path.exists("data.song"):
+        os.remove("data.song")
 
 def get_song_data():
     try:
@@ -37,7 +40,7 @@ def create_ui():
     secondary_monitor = monitors[0]
 
     # Exit fullscreen with 'Esc' key
-    root.bind("<Escape>", lambda e: kill_window())
+    root.bind_all("<Escape>", kill_window)
 
     # Set the background color
     root.configure(background='black')
@@ -45,10 +48,16 @@ def create_ui():
     # Set the window geometry to the size of the secondary monitor
     root.geometry(f"{secondary_monitor.width}x{secondary_monitor.height}+{secondary_monitor.x}+{secondary_monitor.y}")
 
-    # Manually maximize the window without borders
-    root.overrideredirect(True)
+    # Platform-specific fullscreen settings
+    if platform.system() == 'Linux':
+        root.attributes("-fullscreen", True)
+    else:
+        root.overrideredirect(True)
+        root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+
+    root.focus_set()
     root.update_idletasks()
-    root.state('zoomed')
+    root.state("normal")
 
     # Create a frame to hold the content
     content_frame = Frame(root, bg='black')
