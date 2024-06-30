@@ -15,8 +15,7 @@ Detect the currently playing song and display some info about it
 
 **Install the requirements:** `pip3 install -r requirements.txt`
 
-If you get errors while attempting to install the requirements (especially while installing **pyaudio**), open a terminal and try running `sudo apt install python3-dev build-essential`
-(you can replace `python3-dev` with the specific python version you're using such as `python3.11-dev` in case it doesn't work without it)
+If you get errors while attempting to install the requirements (especially while installing **pyaudio**), open a terminal and install `python3-dev` and `build-essential` using your package manager.
 
 ## Usage
 
