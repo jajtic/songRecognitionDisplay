@@ -1,4 +1,4 @@
-import pyaudio, asyncio, os, requests
+import pyaudio, os, requests
 import wave
 from shazamio import Shazam
 
@@ -61,7 +61,7 @@ def download_album_art(img_url):
 async def detect():
     shazam = Shazam()
     out = await shazam.recognize("mic_output.wav")
-    os.system("cls")
+    os.system('cls' if os.name == 'nt' else 'clear')
     try:
         title = out['track']['title']
         artist = out['track']['subtitle']

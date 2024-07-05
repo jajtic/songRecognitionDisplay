@@ -163,3 +163,4 @@ cython_debug/
 
 album-cover.png
 data.song
+mic_output.wav

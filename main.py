@@ -1,4 +1,4 @@
-import asyncio, os
+import asyncio
 from tools import record_audio, detect
 
 while True:
